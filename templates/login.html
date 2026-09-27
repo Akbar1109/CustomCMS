@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Dashboard Login</title>
-    <link rel="stylesheet" href="../static/CSS/style.css">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+College Dashboard Login
+{% endblock %}
+
+{% block content %}
 
 <div class="card">
+
     <h1>Dashboard : College Dashboard Login (Custom CMS)</h1>
 
-    <form method="POST" action="#" novalidate>
+    <form method="POST" action="{{ url_for('login') }}">
+
+        {% if message %}
+            <p class="flash-error" role="alert">{{ message }}</p>
+        {% endif %}
 
         <div class="field">
             <label for="name">Name</label>
@@ -20,6 +23,8 @@
                 id="name"
                 name="name"
                 placeholder="Enter your name"
+                autocomplete="name"
+                required
             >
         </div>
 
@@ -30,6 +35,8 @@
                 id="email"
                 name="email"
                 placeholder="you@gmail.com"
+                autocomplete="email"
+                required
             >
         </div>
 
@@ -40,6 +47,8 @@
                 id="password"
                 name="password"
                 placeholder="Enter password"
+                autocomplete="current-password"
+                required
             >
         </div>
 
@@ -49,8 +58,7 @@
         </div>
 
     </form>
+
 </div>
 
-</body>
-</html>
-
+{% endblock %}
