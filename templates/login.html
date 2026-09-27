@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<link rel="stylesheet" href="..\static\CSS\style.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>Dashboard : College Dashboard Login (Custom CMS)</h1>
+
+    {% if error %}
+    <div class="flash-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('login') if url_for is defined else '#' }}" novalidate>
+
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" value="{{ name or '' }}">
+            {% if name_error %}
+            <div class="error">{{ name_error }}</div>
+            {% endif %}
+        </div>
+
+        <div class="field">
+            <label for="email">Gmail Address</label>
+            <input type="email" id="email" name="email" placeholder="you@gmail.com" value="{{ email or '' }}">
+            {% if email_error %}
+            <div class="error">{{ email_error }}</div>
+            {% endif %}
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password">
+            {% if password_error %}
+            <div class="error">{{ password_error }}</div>
+            {% endif %}
+        </div>
+
+        <div class="btn-row">
+            <button type="submit" class="btn-login">Login</button>
+            <button type="reset" class="btn-reset">Reset</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
